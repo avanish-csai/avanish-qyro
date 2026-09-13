@@ -3,127 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>QYRO® | Wear Your Identity</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <!-- =========================
-         HERO SECTION
-    ========================== -->
-
+    <!-- HERO SECTION -->
     <section class="hero">
-
         <div class="hero-content">
-
             <h1 class="logo">QYRO<span>®</span></h1>
-
             <h2>WEAR YOUR IDENTITY</h2>
-
-            <p>
-                Designed for those who define their own style.
-                Discover premium clothing made for confidence,
-                comfort and everyday expression.
-            </p>
-
-            <div class="buttons">
-
-                <a href="#collection" class="btn shop-btn">
-                    SHOP NOW
-                </a>
-
-                <a href="#collection" class="btn explore-btn">
-                    EXPLORE COLLECTION
-                </a>
-
+            <p>Designed for those who define their own style. Discover premium clothing made for confidence, comfort and everyday expression.</p>
+            <div class="cta-buttons">
+                <a href="#collection" class="btn primary">SHOP NOW</a>
+                <a href="#collection" class="btn secondary">EXPLORE COLLECTION</a>
             </div>
-
         </div>
-
     </section>
 
-
-    <!-- =========================
-         COLLECTION SECTION
-    ========================== -->
-
-    <section id="collection" class="collection">
-
-        <h2>OUR COLLECTION</h2>
-
-        <p class="collection-text">
-            Discover premium clothing designed for your everyday style.
-        </p>
-
-        <div class="products">
-
-            <div class="product-card">
-
-                <div class="product-image">
-                    T-SHIRT
+    <!-- CONTACT US SECTION -->
+    <section id="contact" class="contact-section">
+        <h2>Contact Us</h2>
+        <p>Got questions or custom orders? Reach out to us anytime!</p>
+        
+        <div class="contact-wrapper">
+            <div class="contact-info">
+                <h3>Get in Touch</h3>
+                <p><strong>Email:</strong> support@qyro.com</p>
+                <p><strong>Location:</strong> India</p>
+                <div class="social-links">
+                    <a href="https://instagram.com" target="_blank">Instagram</a>
+                    <a href="https://linkedin.com" target="_blank">LinkedIn</a>
                 </div>
-
-                <h3>Premium T-Shirts</h3>
-
-                <p>
-                    Clean. Comfortable. Confident.
-                </p>
-
             </div>
 
-
-            <div class="product-card">
-
-                <div class="product-image">
-                    HOODIE
-                </div>
-
-                <h3>Premium Hoodies</h3>
-
-                <p>
-                    Comfort with a bold identity.
-                </p>
-
-            </div>
-
-
-            <div class="product-card">
-
-                <div class="product-image">
-                    PANTS
-                </div>
-
-                <h3>Premium Pants</h3>
-
-                <p>
-                    Designed for everyday movement.
-                </p>
-
-            </div>
-
+            <form class="contact-form" action="https://formspree.io/f/xbjnopqr" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
         </div>
-
     </section>
 
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
-
-    <footer>
-
-        <h2>QYRO®</h2>
-
-        <p>Wear Your Identity.</p>
-
-        <p class="copyright">
-            © 2026 QYRO. All Rights Reserved.
-        </p>
-
-    </footer>
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <a href="https://wa.me/919876543210" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </a>
 
 </body>
 </html>

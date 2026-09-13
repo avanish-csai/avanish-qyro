@@ -1,55 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QYRO® | Wear Your Identity</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QYRO® | Wear Your Identity</title>
+
+  <!-- Font Awesome Icons Link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="logo">QYRO<span>®</span></h1>
-            <h2>WEAR YOUR IDENTITY</h2>
-            <p>Designed for those who define their own style. Discover premium clothing made for confidence, comfort and everyday expression.</p>
-            <div class="cta-buttons">
-                <a href="#collection" class="btn primary">SHOP NOW</a>
-                <a href="#collection" class="btn secondary">EXPLORE COLLECTION</a>
-            </div>
+  <!-- Navigation Bar -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">QYRO®</div>
+      <ul class="nav-links">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero-section">
+    <div class="hero-content">
+      <h1>Wear Your Identity</h1>
+      <p>Premium modern clothing built for style, comfort, and distinction.</p>
+      <a href="#contact" class="btn-primary">Get in Touch</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about-section">
+    <div class="container">
+      <h2>About QYRO®</h2>
+      <p>At QYRO®, we craft apparel that defines who you are. Designed with premium fabrics, attention to detail, and modern aesthetic trends to level up your everyday fit.</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <p>Have a question, feedback, or custom inquiry? Reach out to us below!</p>
+      
+      <div class="contact-grid">
+        <!-- Contact Info & Social Icons -->
+        <div class="contact-info">
+          <h3>Get in Touch</h3>
+          <p>Email us or connect via social media.</p>
+          <div class="social-links">
+            <a href="https://www.instagram.com/YOUR_INSTAGRAM_USERNAME" target="_blank" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/YOUR_LINKEDIN_USERNAME" target="_blank" aria-label="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
         </div>
-    </section>
 
-    <!-- CONTACT US SECTION -->
-    <section id="contact" class="contact-section">
-        <h2>Contact Us</h2>
-        <p>Got questions or custom orders? Reach out to us anytime!</p>
-        
-        <div class="contact-wrapper">
-            <div class="contact-info">
-                <h3>Get in Touch</h3>
-                <p><strong>Email:</strong> support@qyro.com</p>
-                <p><strong>Location:</strong> India</p>
-                <div class="social-links">
-                    <a href="https://instagram.com" target="_blank">Instagram</a>
-                    <a href="https://linkedin.com" target="_blank">LinkedIn</a>
-                </div>
-            </div>
+        <!-- Formspree Working Contact Form -->
+        <form class="contact-form" action="https://formspree.io/f/xkjnlvqz" method="POST">
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="email" name="email" placeholder="Your Email" required>
+          <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
 
-            <form class="contact-form" action="https://formspree.io/f/xkjnlvqz" method="POST">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Your Email" required>
-                <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
-        </div>
-    </section>
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/919999999999?text=Hi%20QYRO%20Team,%20I%20have%20a%20query" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
 
-    <!-- FLOATING WHATSAPP BUTTON -->
-    <a href="https://wa.me/6391758652" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-    </a>
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 QYRO®. All Rights Reserved.</p>
+  </footer>
 
 </body>
 </html>

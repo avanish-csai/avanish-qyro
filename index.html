@@ -3,18 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QYRO® | Wear Your Identity</title>
+  <title>QYRO® | Official Streetwear Store</title>
 
-  <!-- Font Awesome Icons Link -->
+  <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Navigation Bar -->
+  <!-- Top Announcement Bar -->
+  <div class="top-banner">
+    🔥 Special Offer: Get Extra 10% OFF on Prepaid Orders | Free Shipping All Over India!
+  </div>
+
+  <!-- Amazon Style Header -->
   <header>
     <nav class="navbar">
       <div class="logo">QYRO®</div>
+      
+      <!-- Search Bar -->
+      <div class="search-container">
+        <input type="text" placeholder="Search oversized tees, hoodies, streetwear...">
+        <button><i class="fas fa-search"></i></button>
+      </div>
+
       <ul class="nav-links">
         <li><a href="#hero">Home</a></li>
         <li><a href="#shop">Shop</a></li>
@@ -24,34 +36,47 @@
     </nav>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero Banner -->
   <section id="hero" class="hero-section">
     <div class="hero-content">
+      <span class="hero-tag">NEW SEASON DROPS</span>
       <h1>Wear Your Identity</h1>
-      <p>Premium modern streetwear built for style, comfort, and distinction.</p>
-      <a href="#shop" class="btn-primary">Explore Store</a>
+      <p>Premium modern streetwear engineered for comfort, style, and distinction.</p>
+      <a href="#shop" class="btn-primary"><i class="fas fa-shopping-bag"></i> Explore Collection</a>
     </div>
   </section>
 
-  <!-- Shop Section (E-Commerce Product Grid) -->
+  <!-- Category Pills Filter -->
+  <div class="category-bar container">
+    <button class="cat-btn active">All Items</button>
+    <button class="cat-btn">Oversized Tees</button>
+    <button class="cat-btn">Hoodies & Jackets</button>
+    <button class="cat-btn">Acid Wash</button>
+  </div>
+
+  <!-- Amazon Style Shop Grid -->
   <section id="shop" class="shop-section">
     <div class="container">
-      <h2>Featured Collection</h2>
-      <p class="section-subtitle">Select your fit and order directly on WhatsApp</p>
+      <h2 class="section-title">Featured Products</h2>
 
       <div class="product-grid">
 
         <!-- Product 1 -->
         <div class="product-card">
-          <div class="product-badge">Bestseller</div>
-          <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80" alt="QYRO Oversized Black Tee">
+          <div class="product-badge red">Bestseller</div>
+          <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80" alt="Heavyweight Black Tee">
           <div class="product-info">
-            <h3>QYRO Heavyweight Black Tee</h3>
-            <p class="product-desc">240 GSM 100% Super Combed Cotton</p>
+            <span class="brand-subtitle">QYRO® Original</span>
+            <h3>Heavyweight Oversized Black Tee</h3>
             
-            <div class="size-selector">
-              <label for="size1">Select Size:</label>
-              <select id="size1">
+            <div class="rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+              <span>(124 reviews)</span>
+            </div>
+
+            <div class="size-picker">
+              <label>Select Size:</label>
+              <select id="size-prod1">
                 <option value="S">S - Small</option>
                 <option value="M" selected>M - Medium</option>
                 <option value="L">L - Large</option>
@@ -62,25 +87,31 @@
             <div class="price-container">
               <span class="price">₹699</span>
               <span class="original-price">₹1,299</span>
-              <span class="discount">(46% OFF)</span>
+              <span class="discount">46% OFF</span>
             </div>
-            <a href="https://wa.me/919999999999?text=Hi%20QYRO,%20I%20want%20to%20order%20Heavyweight%20Black%20Tee%20(₹699)" class="buy-btn" target="_blank">
+            
+            <button class="buy-btn" onclick="orderOnWhatsApp('Heavyweight Oversized Black Tee', '699', 'size-prod1')">
               <i class="fab fa-whatsapp"></i> Buy Now
-            </a>
+            </button>
           </div>
         </div>
 
         <!-- Product 2 -->
         <div class="product-card">
-          <div class="product-badge">New Launch</div>
-          <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=600&q=80" alt="QYRO Streetwear Hoodie">
+          <div class="product-badge yellow">Hot Drop</div>
+          <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=600&q=80" alt="Streetwear Fleece Hoodie">
           <div class="product-info">
-            <h3>QYRO Aesthetic Fleece Hoodie</h3>
-            <p class="product-desc">350 GSM Premium Winter Fleece Hoodie</p>
+            <span class="brand-subtitle">QYRO® Winter</span>
+            <h3>Aesthetic Streetwear Fleece Hoodie</h3>
             
-            <div class="size-selector">
-              <label for="size2">Select Size:</label>
-              <select id="size2">
+            <div class="rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <span>(89 reviews)</span>
+            </div>
+
+            <div class="size-picker">
+              <label>Select Size:</label>
+              <select id="size-prod2">
                 <option value="S">S - Small</option>
                 <option value="M">M - Medium</option>
                 <option value="L" selected>L - Large</option>
@@ -91,25 +122,31 @@
             <div class="price-container">
               <span class="price">₹1,299</span>
               <span class="original-price">₹2,499</span>
-              <span class="discount">(48% OFF)</span>
+              <span class="discount">48% OFF</span>
             </div>
-            <a href="https://wa.me/919999999999?text=Hi%20QYRO,%20I%20want%20to%20order%20Fleece%20Hoodie%20(₹1299)" class="buy-btn" target="_blank">
+            
+            <button class="buy-btn" onclick="orderOnWhatsApp('Aesthetic Streetwear Fleece Hoodie', '1299', 'size-prod2')">
               <i class="fab fa-whatsapp"></i> Buy Now
-            </a>
+            </button>
           </div>
         </div>
 
         <!-- Product 3 -->
         <div class="product-card">
-          <div class="product-badge">Trending</div>
-          <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=600&q=80" alt="QYRO Graphic Acid Wash Tee">
+          <div class="product-badge green">Trending</div>
+          <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=600&q=80" alt="Acid Wash Graphic Tee">
           <div class="product-info">
-            <h3>QYRO Acid Wash Graphic Tee</h3>
-            <p class="product-desc">Urban Aesthetic High-Density Screen Print</p>
+            <span class="brand-subtitle">QYRO® Edition</span>
+            <h3>Acid Wash Aesthetic Graphic Tee</h3>
             
-            <div class="size-selector">
-              <label for="size3">Select Size:</label>
-              <select id="size3">
+            <div class="rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+              <span>(56 reviews)</span>
+            </div>
+
+            <div class="size-picker">
+              <label>Select Size:</label>
+              <select id="size-prod3">
                 <option value="S">S - Small</option>
                 <option value="M" selected>M - Medium</option>
                 <option value="L">L - Large</option>
@@ -120,25 +157,31 @@
             <div class="price-container">
               <span class="price">₹799</span>
               <span class="original-price">₹1,499</span>
-              <span class="discount">(46% OFF)</span>
+              <span class="discount">46% OFF</span>
             </div>
-            <a href="https://wa.me/919999999999?text=Hi%20QYRO,%20I%20want%20to%20order%20Acid%20Wash%20Tee%20(₹799)" class="buy-btn" target="_blank">
+            
+            <button class="buy-btn" onclick="orderOnWhatsApp('Acid Wash Aesthetic Graphic Tee', '799', 'size-prod3')">
               <i class="fab fa-whatsapp"></i> Buy Now
-            </a>
+            </button>
           </div>
         </div>
 
         <!-- Product 4 -->
         <div class="product-card">
-          <div class="product-badge">Limited</div>
-          <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=600&q=80" alt="QYRO Minimalist White Tee">
+          <div class="product-badge red">Limited</div>
+          <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=600&q=80" alt="Minimalist Drop-Shoulder White Tee">
           <div class="product-info">
-            <h3>QYRO Minimalist White Tee</h3>
-            <p class="product-desc">Breathable Summer Drop-Shoulder Fit</p>
+            <span class="brand-subtitle">QYRO® Basics</span>
+            <h3>Minimalist Drop-Shoulder White Tee</h3>
             
-            <div class="size-selector">
-              <label for="size4">Select Size:</label>
-              <select id="size4">
+            <div class="rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+              <span>(98 reviews)</span>
+            </div>
+
+            <div class="size-picker">
+              <label>Select Size:</label>
+              <select id="size-prod4">
                 <option value="S">S - Small</option>
                 <option value="M">M - Medium</option>
                 <option value="L" selected>L - Large</option>
@@ -149,11 +192,12 @@
             <div class="price-container">
               <span class="price">₹649</span>
               <span class="original-price">₹1,199</span>
-              <span class="discount">(45% OFF)</span>
+              <span class="discount">45% OFF</span>
             </div>
-            <a href="https://wa.me/919999999999?text=Hi%20QYRO,%20I%20want%20to%20order%20Minimalist%20White%20Tee%20(₹649)" class="buy-btn" target="_blank">
+            
+            <button class="buy-btn" onclick="orderOnWhatsApp('Minimalist Drop-Shoulder White Tee', '649', 'size-prod4')">
               <i class="fab fa-whatsapp"></i> Buy Now
-            </a>
+            </button>
           </div>
         </div>
 
@@ -180,12 +224,8 @@
           <h3>Get in Touch</h3>
           <p>Email us or connect via social media.</p>
           <div class="social-links">
-            <a href="https://www.instagram.com/YOUR_INSTAGRAM_USERNAME" target="_blank" aria-label="Instagram">
-              <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/YOUR_LINKEDIN_USERNAME" target="_blank" aria-label="LinkedIn">
-              <i class="fab fa-linkedin-in"></i>
-            </a>
+            <a href="https://www.instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
           </div>
         </div>
 
@@ -199,15 +239,27 @@
     </div>
   </section>
 
-  <!-- Floating WhatsApp Button -->
-  <a href="https://wa.me/919999999999?text=Hi%20QYRO%20Team,%20I%20have%20a%20query" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/91XXXXXXXXXX?text=Hi%20QYRO%20Team,%20I%20have%20a%20query" class="whatsapp-float" target="_blank" id="floating-wa">
     <i class="fab fa-whatsapp"></i>
   </a>
 
-  <!-- Footer -->
   <footer>
     <p>&copy; 2026 QYRO®. All Rights Reserved.</p>
   </footer>
+
+  <!-- Dynamic WhatsApp Ordering Script -->
+  <script>
+    // ⚠️ YAHA APNA REAL WHATSAPP NUMBER DAALNA (WITH COUNTRY CODE 91)
+    const whatsappNumber = "91XXXXXXXXXX"; 
+
+    function orderOnWhatsApp(productName, price, sizeSelectId) {
+      const selectedSize = document.getElementById(sizeSelectId).value;
+      const message = `Hi QYRO Team! I want to order:\n\n📌 Product: ${productName}\n📏 Size: ${selectedSize}\n💰 Price: ₹${price}\n\nPlease share payment details and process my order!`;
+      const encodedMessage = encodeURIComponent(message);
+      window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
+    }
+  </script>
 
 </body>
 </html>

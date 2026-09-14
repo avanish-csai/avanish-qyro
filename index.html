@@ -83,6 +83,8 @@
                 <option value="XL">XL - Extra Large</option>
               </select>
             </div>
+            
+            <a href="javascript:void(0)" onclick="openSizeChart()" class="size-chart-link">📏 View Size Chart</a>
 
             <div class="price-container">
               <span class="price">₹699</span>
@@ -118,6 +120,8 @@
                 <option value="XL">XL - Extra Large</option>
               </select>
             </div>
+            
+            <a href="javascript:void(0)" onclick="openSizeChart()" class="size-chart-link">📏 View Size Chart</a>
 
             <div class="price-container">
               <span class="price">₹1,299</span>
@@ -153,6 +157,8 @@
                 <option value="XL">XL - Extra Large</option>
               </select>
             </div>
+            
+            <a href="javascript:void(0)" onclick="openSizeChart()" class="size-chart-link">📏 View Size Chart</a>
 
             <div class="price-container">
               <span class="price">₹799</span>
@@ -188,6 +194,8 @@
                 <option value="XL">XL - Extra Large</option>
               </select>
             </div>
+            
+            <a href="javascript:void(0)" onclick="openSizeChart()" class="size-chart-link">📏 View Size Chart</a>
 
             <div class="price-container">
               <span class="price">₹649</span>
@@ -201,6 +209,23 @@
           </div>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- Verified Buyer Reviews Section -->
+  <section class="reviews-section container">
+    <h2 class="section-title">Verified Buyer Reviews</h2>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p>"Quality ekdam next level hai! Heavyweight fabric aur print ka color bilkul premium feel deta hai."</p>
+        <span>- Rahul M. (Verified Buyer)</span>
+      </div>
+      <div class="review-card">
+        <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p>"Oversized fitting super aesthetic hai. WhatsApp order process bahut fast aur smooth tha."</p>
+        <span>- Aman S. (Verified Buyer)</span>
       </div>
     </div>
   </section>
@@ -239,8 +264,32 @@
     </div>
   </section>
 
+  <!-- Size Chart Modal Popup -->
+  <div id="sizeChartModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeSizeChart()">&times;</span>
+      <h3>QYRO® Official Size Guide (Inches)</h3>
+      <table class="size-table">
+        <thead>
+          <tr>
+            <th>Size</th>
+            <th>Chest</th>
+            <th>Length</th>
+            <th>Shoulder</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>S</td><td>38"</td><td>27"</td><td>18"</td></tr>
+          <tr><td>M</td><td>40"</td><td>28"</td><td>19"</td></tr>
+          <tr><td>L</td><td>42"</td><td>29"</td><td>20"</td></tr>
+          <tr><td>XL</td><td>44"</td><td>30"</td><td>21"</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
   <!-- Floating WhatsApp -->
-  <a href="https://wa.me/91XXXXXXXXXX?text=Hi%20QYRO%20Team,%20I%20have%20a%20query" class="whatsapp-float" target="_blank" id="floating-wa">
+  <a href="https://wa.me/91YOUR_REAL_NUMBER?text=Hi%20QYRO%20Team,%20I%20have%20a%20query" class="whatsapp-float" target="_blank" id="floating-wa">
     <i class="fab fa-whatsapp"></i>
   </a>
 
@@ -248,16 +297,31 @@
     <p>&copy; 2026 QYRO®. All Rights Reserved.</p>
   </footer>
 
-  <!-- Dynamic WhatsApp Ordering Script -->
+  <!-- Interactive JavaScript -->
   <script>
     // ⚠️ YAHA APNA REAL WHATSAPP NUMBER DAALNA (WITH COUNTRY CODE 91)
-    const whatsappNumber = "91XXXXXXXXXX"; 
+    const whatsappNumber = "91YOUR_REAL_NUMBER"; 
 
     function orderOnWhatsApp(productName, price, sizeSelectId) {
       const selectedSize = document.getElementById(sizeSelectId).value;
       const message = `Hi QYRO Team! I want to order:\n\n📌 Product: ${productName}\n📏 Size: ${selectedSize}\n💰 Price: ₹${price}\n\nPlease share payment details and process my order!`;
       const encodedMessage = encodeURIComponent(message);
       window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
+    }
+
+    function openSizeChart() {
+      document.getElementById("sizeChartModal").style.display = "flex";
+    }
+
+    function closeSizeChart() {
+      document.getElementById("sizeChartModal").style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById("sizeChartModal");
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
     }
   </script>
 

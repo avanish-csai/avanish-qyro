@@ -3,24 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QYRO® | Official Streetwear Collection (50 Drops)</title>
+  <title>QYRO® | Official Streetwear Store</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <style>
-    /* Global Reset & Dark Theme Guarantee */
+    /* Global Reset & Pure Dark Theme Guarantee */
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
-    html, body { background-color: #0c0c0c !important; color: #ffffff !important; line-height: 1.5; min-height: 100vh; }
-    .container { max-width: 1280px; margin: 0 auto; padding: 30px 20px; }
+    html, body { background-color: #0d0d0d !important; color: #ffffff !important; line-height: 1.5; min-height: 100vh; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 30px 20px; }
 
     /* Top Announcement Banner */
     .top-banner { background: #ffc107; color: #000; text-align: center; padding: 8px 15px; font-size: 13px; font-weight: 700; letter-spacing: 0.5px; }
 
     /* Header & Navigation */
     header { background: #121212; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #222; }
-    .navbar { display: flex; justify-content: space-between; align-items: center; max-width: 1280px; margin: 0 auto; padding: 14px 20px; gap: 15px; }
-    .logo { font-size: 26px; font-weight: 900; letter-spacing: 2px; color: #ffc107; }
+    .navbar { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 14px 20px; gap: 15px; }
+    .logo { font-size: 26px; font-weight: 900; letter-spacing: 2px; color: #ffc107; text-decoration: none; }
 
     .search-container { display: flex; flex: 1; max-width: 450px; }
     .search-container input { width: 100%; padding: 10px 14px; background: #222; border: 1px solid #333; border-radius: 6px 0 0 6px; color: #fff; outline: none; font-size: 13px; }
@@ -37,11 +37,11 @@
     .cat-btn.active, .cat-btn:hover { background: #ffc107; color: #000; font-weight: bold; border-color: #ffc107; }
 
     /* Product Grid Section */
-    .shop-section { background: #0c0c0c; padding-top: 10px; }
+    .shop-section { background: #0d0d0d; padding-top: 10px; }
     .section-title { font-size: 24px; color: #ffc107; margin-bottom: 20px; font-weight: 800; display: flex; justify-content: space-between; align-items: center; }
     .item-count { font-size: 14px; color: #888; font-weight: normal; }
 
-    .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
     .product-card { background: #141414; border-radius: 10px; overflow: hidden; border: 1px solid #222; position: relative; transition: 0.3s; }
     .product-card:hover { border-color: #ffc107; transform: translateY(-4px); }
     
@@ -50,7 +50,7 @@
     .product-badge.yellow { background: #ffc107; color: #000; }
     .product-badge.green { background: #2ed573; color: #fff; }
 
-    .product-card img { width: 100%; height: 310px; object-fit: cover; display: block; background: #1a1a1a; }
+    .product-card img { width: 100%; height: 300px; object-fit: cover; display: block; background: #1a1a1a; }
     .product-info { padding: 15px; }
     .brand-subtitle { font-size: 10px; color: #777; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
     .product-info h3 { font-size: 15px; margin: 4px 0 6px 0; color: #fff; font-weight: 600; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
@@ -69,6 +69,30 @@
     .buy-btn { width: 100%; background: #ffc107; color: #000; border: none; padding: 11px; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.3s; display: flex; justify-content: center; align-items: center; gap: 8px; font-size: 14px; }
     .buy-btn:hover { background: #e0a800; }
 
+    /* Contact Us Section - Matching Screenshot Exactly */
+    .contact-section { margin-top: 60px; padding-bottom: 40px; }
+    .contact-header { text-align: center; margin-bottom: 30px; }
+    .contact-header h2 { font-size: 30px; font-weight: 800; color: #ffc107; margin-bottom: 8px; }
+    .contact-header p { color: #aaa; font-size: 14px; }
+
+    .contact-container { display: flex; gap: 25px; flex-wrap: wrap; }
+    
+    .contact-info-card { flex: 1; min-width: 280px; background: #181818; padding: 30px; border-radius: 8px; border: 1px solid #222; }
+    .contact-info-card h3 { color: #ffc107; font-size: 18px; margin-bottom: 20px; font-weight: 700; }
+    .contact-info-card p { color: #ccc; margin-bottom: 12px; font-size: 14px; }
+    .contact-info-card strong { color: #fff; }
+    .social-links { margin-top: 25px; display: flex; gap: 20px; }
+    .social-links a { color: #ffc107; text-decoration: none; font-weight: bold; font-size: 15px; transition: 0.3s; }
+    .social-links a:hover { text-decoration: underline; color: #fff; }
+
+    .contact-form-card { flex: 1.4; min-width: 300px; background: #181818; padding: 30px; border-radius: 8px; border: 1px solid #222; }
+    .contact-form-card form { display: flex; flex-direction: column; gap: 15px; }
+    .contact-form-card input, .contact-form-card textarea { width: 100%; background: #252525; border: 1px solid #333; padding: 12px 15px; border-radius: 6px; color: #fff; font-size: 14px; outline: none; transition: 0.3s; }
+    .contact-form-card input:focus, .contact-form-card textarea:focus { border-color: #ffc107; }
+    .contact-form-card textarea { height: 110px; resize: none; }
+    .send-btn { background: #ffc107; color: #000; border: none; padding: 13px; border-radius: 6px; font-weight: bold; font-size: 15px; cursor: pointer; transition: 0.3s; margin-top: 5px; }
+    .send-btn:hover { background: #e0a800; }
+
     .whatsapp-float { position: fixed; bottom: 25px; right: 25px; width: 52px; height: 52px; background: #25d366; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; z-index: 1000; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
     footer { text-align: center; padding: 25px; background: #050505; color: #555; font-size: 12px; border-top: 1px solid #1a1a1a; margin-top: 40px; }
 
@@ -79,6 +103,7 @@
       .product-info { padding: 10px; }
       .product-info h3 { font-size: 13px; }
       .price { font-size: 15px; }
+      .contact-container { flex-direction: column; }
     }
   </style>
 </head>
@@ -92,7 +117,7 @@
   <!-- Header -->
   <header>
     <nav class="navbar">
-      <div class="logo">QYRO®</div>
+      <a href="#" class="logo">QYRO®</a>
       
       <!-- Live Search Bar -->
       <div class="search-container">
@@ -105,6 +130,7 @@
           <li><a href="#shop">Collection</a></li>
           <li><a href="#shop">Tees</a></li>
           <li><a href="#shop">Hoodies</a></li>
+          <li><a href="#contact">Contact Us</a></li>
         </ul>
       </div>
     </nav>
@@ -128,7 +154,39 @@
 
     <!-- 50 Products Grid CONTAINER -->
     <div class="product-grid" id="main-product-grid">
-      <!-- Generated Dynamically via JavaScript for Clean Performance -->
+      <!-- Generated Dynamically via JavaScript -->
+    </div>
+  </section>
+
+  <!-- Contact Us Section (Matching Your Screenshot) -->
+  <section id="contact" class="contact-section container">
+    <div class="contact-header">
+      <h2>Contact Us</h2>
+      <p>Got questions or custom orders? Reach out to us anytime!</p>
+    </div>
+
+    <div class="contact-container">
+      <!-- Left Card: Get in Touch -->
+      <div class="contact-info-card">
+        <h3>Get in Touch</h3>
+        <p><strong>Email:</strong> support@qyro.com</p>
+        <p><strong>Location:</strong> India</p>
+        
+        <div class="social-links">
+          <a href="https://instagram.com" target="_blank">Instagram</a>
+          <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+
+      <!-- Right Card: Message Form -->
+      <div class="contact-form-card">
+        <form onsubmit="handleMailSend(event)">
+          <input type="text" id="custName" placeholder="Your Name" required>
+          <input type="email" id="custEmail" placeholder="Your Email" required>
+          <textarea id="custMsg" placeholder="Your Message" required></textarea>
+          <button type="submit" class="send-btn">Send Message</button>
+        </form>
+      </div>
     </div>
   </section>
 
@@ -141,12 +199,12 @@
     <p>&copy; 2026 QYRO®. All 50 Items Crafted for Comfort & Street Culture.</p>
   </footer>
 
-  <!-- Script to Auto-Generate 50 Products cleanly and handle WhatsApp Orders -->
+  <!-- Script for 50 Products & Direct Gmail Form Handling -->
   <script>
-    // ⚠️ REPLACE WITH YOUR ACTUAL 10-DIGIT WHATSAPP NUMBER (WITH 91 PREFIX)
+    // ⚠️ REPLACE WITH YOUR ACTUAL 10-DIGIT WHATSAPP NUMBER
     const whatsappNumber = "91YOUR_REAL_NUMBER";
 
-    // 50 Streetwear Products Database Array
+    // 50 Streetwear Products Data
     const rawProducts = [
       { name: "Tokyo Drift Cyberpunk Oversized Tee", cat: "tees", price: 749, orig: 1399, badge: "Hot Drop", badgeColor: "yellow", img: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80", rating: "4.9 (142)" },
       { name: "Heavyweight Charcoal Fleece Hoodie", cat: "hoodies", price: 1299, orig: 2499, badge: "Bestseller", badgeColor: "red", img: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=600&q=80", rating: "4.8 (89)" },
@@ -160,7 +218,6 @@
       { name: "Anime Samurai Oversized Tee Black", cat: "tees", price: 749, orig: 1399, badge: "Bestseller", badgeColor: "red", img: "https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&w=600&q=80", rating: "5.0 (310)" },
     ];
 
-    // Expand Database dynamically to 50 distinct items
     const categoriesList = ["tees", "hoodies", "acid", "bottoms"];
     const badgesList = ["Bestseller", "Hot Drop", "Trending", "New Arrival", "Limited Edition"];
     const badgeColors = ["red", "yellow", "green"];
@@ -185,7 +242,7 @@
       });
     }
 
-    // Render All 50 Products into DOM
+    // Render 50 Products
     const grid = document.getElementById("main-product-grid");
     grid.innerHTML = fullProducts.map(p => {
       const discountPct = Math.round(((p.orig - p.price) / p.orig) * 100);
@@ -226,6 +283,17 @@
       window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
     }
 
+    // Gmail Mailto Direct Handling for Contact Box
+    function handleMailSend(e) {
+      e.preventDefault();
+      const name = document.getElementById('custName').value;
+      const email = document.getElementById('custEmail').value;
+      const msg = document.getElementById('custMsg').value;
+      
+      const mailtoUrl = `mailto:awanish630684@gmail.com?subject=New Inquiry from ${encodeURIComponent(name)}&body=${encodeURIComponent("Sender Email: " + email + "\n\nMessage:\n" + msg)}`;
+      window.location.href = mailtoUrl;
+    }
+
     // Category Filter Handler
     function filterCategory(cat) {
       document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
@@ -243,7 +311,7 @@
       document.getElementById('visible-count').textContent = `Showing ${count} Products`;
     }
 
-    // Real-Time Search Handler
+    // Search Handler
     function searchProducts() {
       let filter = document.getElementById('searchInput').value.toLowerCase();
       let count = 0;

@@ -1,219 +1,520 @@
-<div class="product-grid">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QYRO® | Official Premium Streetwear</title>
 
-  <!-- Product 1 -->
-  <div class="product-card" data-category="tees">
-    <div class="product-badge red">Bestseller</div>
-    <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80" alt="Heavyweight Black Tee">
-    <div class="product-info">
-      <span class="brand-subtitle">QYRO® Original</span>
-      <h3>Heavyweight Oversized Black Tee</h3>
-      <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(124)</span></div>
-      <div class="size-picker">
-        <label>Fit:</label>
-        <select id="size-p1"><option value="S">S</option><option value="M" selected>M</option><option value="L">L</option><option value="XL">XL</option></select>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* Global Reset & Base Styles */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+    body { background-color: #0c0c0c; color: #ffffff; line-height: 1.5; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 35px 20px; }
+
+    /* Top Announcement Banner */
+    .top-banner { background: #ffc107; color: #000; text-align: center; padding: 8px 15px; font-size: 13px; font-weight: 700; letter-spacing: 0.5px; }
+
+    /* Header & Navigation */
+    header { background: #121212; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #222; }
+    .navbar { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 12px 20px; gap: 15px; }
+    .logo { font-size: 26px; font-weight: 900; letter-spacing: 2px; color: #ffc107; }
+
+    .search-container { display: flex; flex: 1; max-width: 450px; }
+    .search-container input { width: 100%; padding: 10px 14px; background: #222; border: 1px solid #333; border-radius: 6px 0 0 6px; color: #fff; outline: none; font-size: 13px; }
+    .search-container button { background: #ffc107; border: none; padding: 0 16px; border-radius: 0 6px 6px 0; cursor: pointer; color: #000; font-size: 14px; }
+
+    .header-actions { display: flex; align-items: center; gap: 20px; }
+    .nav-links { list-style: none; display: flex; gap: 18px; }
+    .nav-links a { color: #ccc; text-decoration: none; font-weight: 500; font-size: 14px; transition: 0.3s; }
+    .nav-links a:hover { color: #ffc107; }
+
+    .cart-icon { position: relative; font-size: 20px; color: #ffc107; cursor: pointer; }
+    .cart-badge { position: absolute; top: -8px; right: -10px; background: #ff4757; color: #fff; font-size: 10px; font-weight: bold; width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+
+    /* Hero Section */
+    .hero-section { height: 65vh; display: flex; justify-content: center; align-items: center; text-align: center; background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1500&q=80') center/cover; padding: 0 20px; }
+    .hero-tag { background: rgba(255,193,7,0.2); color: #ffc107; padding: 5px 14px; border-radius: 20px; font-size: 12px; font-weight: bold; letter-spacing: 1px; }
+    .hero-content h1 { font-size: 46px; margin: 15px 0 10px 0; font-weight: 900; }
+    .hero-content p { color: #aaa; margin-bottom: 25px; font-size: 15px; max-width: 600px; }
+    .btn-primary { background: #ffc107; color: #000; padding: 12px 30px; border-radius: 25px; text-decoration: none; font-weight: bold; display: inline-block; transition: 0.3s; }
+    .btn-primary:hover { background: #e0a800; transform: translateY(-2px); }
+
+    /* Trust Badges Grid */
+    .trust-badges { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; background: #141414; border-radius: 10px; margin-top: -30px; position: relative; z-index: 10; border: 1px solid #222; padding: 25px 20px; }
+    .badge-item { display: flex; align-items: center; gap: 14px; }
+    .badge-item i { font-size: 26px; color: #ffc107; }
+    .badge-item h4 { font-size: 14px; color: #fff; font-weight: 600; }
+    .badge-item p { font-size: 12px; color: #888; margin-top: 2px; }
+
+    /* Category Filter Bar */
+    .category-bar { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; margin-top: 20px; }
+    .cat-btn { background: #1a1a1a; border: 1px solid #333; color: #ccc; padding: 8px 18px; border-radius: 20px; cursor: pointer; white-space: nowrap; font-size: 13px; transition: 0.3s; }
+    .cat-btn.active, .cat-btn:hover { background: #ffc107; color: #000; font-weight: bold; border-color: #ffc107; }
+
+    /* Product Grid & Cards */
+    .shop-section { background: #0c0c0c; }
+    .section-title { font-size: 26px; color: #ffc107; margin-bottom: 20px; font-weight: 800; }
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+    .product-card { background: #141414; border-radius: 10px; overflow: hidden; border: 1px solid #222; position: relative; transition: 0.3s; }
+    .product-card:hover { border-color: #ffc107; transform: translateY(-4px); }
+    .product-badge { position: absolute; top: 12px; left: 12px; font-size: 10px; font-weight: bold; padding: 4px 8px; border-radius: 4px; z-index: 2; text-transform: uppercase; }
+    .product-badge.red { background: #ff4757; color: #fff; }
+    .product-badge.yellow { background: #ffc107; color: #000; }
+    .product-badge.green { background: #2ed573; color: #fff; }
+    
+    .product-card img { width: 100%; height: 300px; object-fit: cover; display: block; }
+    .product-info { padding: 15px; }
+    .brand-subtitle { font-size: 10px; color: #777; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+    .product-info h3 { font-size: 15px; margin: 4px 0 6px 0; color: #fff; font-weight: 600; }
+    .rating { color: #ffc107; font-size: 11px; margin-bottom: 10px; }
+    .rating span { color: #666; margin-left: 4px; }
+    
+    .size-picker { display: flex; justify-content: space-between; align-items: center; background: #1e1e1e; padding: 6px 10px; border-radius: 5px; font-size: 12px; border: 1px solid #2a2a2a; }
+    .size-picker label { color: #aaa; font-weight: 500; }
+    .size-picker select { background: transparent; color: #ffc107; border: none; font-weight: bold; outline: none; cursor: pointer; }
+    .size-chart-link { color: #ffc107; font-size: 11px; text-decoration: underline; display: inline-block; margin: 8px 0 10px 0; cursor: pointer; }
+    
+    .price-container { display: flex; align-items: baseline; gap: 8px; margin-bottom: 12px; }
+    .price { font-size: 19px; font-weight: 800; color: #fff; }
+    .original-price { font-size: 12px; color: #666; text-decoration: line-through; }
+    .discount { font-size: 11px; color: #2ed573; font-weight: bold; }
+    .buy-btn { width: 100%; background: #ffc107; color: #000; border: none; padding: 11px; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.3s; display: flex; justify-content: center; align-items: center; gap: 8px; font-size: 14px; }
+    .buy-btn:hover { background: #e0a800; }
+
+    /* FAQ Accordion Section */
+    .faq-container { display: flex; flex-direction: column; gap: 12px; max-width: 800px; }
+    .faq-item { background: #141414; border: 1px solid #222; border-radius: 8px; overflow: hidden; }
+    .faq-question { padding: 16px 20px; font-size: 15px; font-weight: 600; display: flex; justify-content: space-between; align-items: center; cursor: pointer; color: #fff; }
+    .faq-answer { padding: 0 20px 16px 20px; color: #aaa; font-size: 13.5px; display: none; border-top: 1px solid #1f1f1f; margin-top: 8px; padding-top: 12px; }
+    .faq-item.active .faq-answer { display: block; }
+    .faq-item.active .faq-question i { transform: rotate(180deg); color: #ffc107; }
+
+    /* VIP Newsletter Section */
+    .newsletter-section { background: linear-gradient(rgba(0,0,0,0.88), rgba(0,0,0,0.88)), url('https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=1200&q=80') center/cover; text-align: center; padding: 60px 20px; border-top: 1px solid #222; border-bottom: 1px solid #222; margin-top: 40px; }
+    .newsletter-section h2 { font-size: 30px; color: #ffc107; margin-bottom: 8px; font-weight: 800; }
+    .newsletter-section p { color: #ccc; margin-bottom: 25px; font-size: 14px; }
+    .newsletter-form { display: flex; justify-content: center; gap: 10px; max-width: 480px; margin: 0 auto; }
+    .newsletter-form input { padding: 12px 16px; width: 70%; background: #111; border: 1px solid #333; border-radius: 6px; color: #fff; outline: none; font-size: 13px; }
+    .newsletter-form button { padding: 12px 20px; background: #ffc107; border: none; font-weight: bold; border-radius: 6px; cursor: pointer; color: #000; }
+
+    /* Contact Section & Footer */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+    .contact-info h3 { color: #ffc107; font-size: 20px; margin-bottom: 10px; }
+    .contact-info p { color: #aaa; font-size: 14px; }
+    .contact-form { display: flex; flex-direction: column; gap: 12px; }
+    .contact-form input, .contact-form textarea { background: #141414; border: 1px solid #282828; padding: 12px; border-radius: 6px; color: #fff; outline: none; font-size: 13px; }
+    .contact-form button { background: #ffc107; border: none; padding: 12px; font-weight: bold; border-radius: 6px; cursor: pointer; color: #000; }
+    
+    .social-links { margin-top: 15px; }
+    .social-links a { display: inline-flex; width: 38px; height: 38px; background: #1a1a1a; color: #fff; border-radius: 50%; align-items: center; justify-content: center; margin-right: 10px; text-decoration: none; border: 1px solid #333; }
+    .whatsapp-float { position: fixed; bottom: 25px; right: 25px; width: 52px; height: 52px; background: #25d366; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; z-index: 1000; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+    footer { text-align: center; padding: 20px; background: #050505; color: #555; font-size: 12px; border-top: 1px solid #1a1a1a; }
+
+    /* Modal Popup Size Guide */
+    .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); justify-content: center; align-items: center; }
+    .modal-content { background: #181818; padding: 25px; border-radius: 10px; border: 1px solid #ffc107; width: 90%; max-width: 420px; position: relative; text-align: center; }
+    .close-btn { position: absolute; top: 10px; right: 15px; color: #fff; font-size: 24px; cursor: pointer; }
+    .size-table { width: 100%; margin-top: 15px; border-collapse: collapse; }
+    .size-table th, .size-table td { border: 1px solid #333; padding: 8px; font-size: 13px; }
+    .size-table th { background: #ffc107; color: #000; }
+
+    /* Mobile Responsive */
+    @media(max-width: 768px) {
+      .search-container, .nav-links { display: none; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .hero-content h1 { font-size: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Announcement Bar with Live Countdown Timer -->
+  <div class="top-banner">
+    <span>🔥 MIDNIGHT FLASH SALE: Extra 15% OFF ends in </span>
+    <span id="countdown-timer">05h 30m 00s</span>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">QYRO®</div>
+      
+      <!-- Live Search Bar -->
+      <div class="search-container">
+        <input type="text" id="searchInput" onkeyup="searchProducts()" placeholder="Search oversized tees, hoodies, streetwear...">
+        <button><i class="fas fa-search"></i></button>
       </div>
-      <a href="javascript:void(0)" onclick="openSizeChart()" class="size-chart-link">📏 Size Guide</a>
-      <div class="price-container"><span class="price">₹699</span><span class="original-price">₹1,299</span><span class="discount">46% OFF</span></div>
-      <button class="buy-btn" onclick="orderOnWhatsApp('Heavyweight Oversized Black Tee', '699', 'size-p1')"><i class="fab fa-whatsapp"></i> Buy Now</button>
+
+      <div class="header-actions">
+        <ul class="nav-links">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#shop">Shop</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="cart-icon" onclick="alert('WhatsApp Direct Checkout Active!')">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="cart-badge">0</span>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero-section">
+    <div class="hero-content">
+      <span class="hero-tag">NEW DROP 2026</span>
+      <h1>Wear Your Identity</h1>
+      <p>Heavyweight fabrics, luxury aesthetic cuts, and unmatched streetwear comfort.</p>
+      <a href="#shop" class="btn-primary"><i class="fas fa-shopping-bag"></i> Shop Collection</a>
+    </div>
+  </section>
+
+  <!-- Value Props / Trust Badges -->
+  <section class="trust-badges container">
+    <div class="badge-item">
+      <i class="fas fa-truck-fast"></i>
+      <div>
+        <h4>Free Express Shipping</h4>
+        <p>On all orders above ₹999</p>
+      </div>
+    </div>
+    <div class="badge-item">
+      <i class="fas fa-gem"></i>
+      <div>
+        <h4>240 GSM Premium Cotton</h4>
+        <p>100% Super Combed Fabric</p>
+      </div>
+    </div>
+    <div class="badge-item">
+      <i class="fas fa-arrow-rotate-left"></i>
+      <div>
+        <h4>7 Days Easy Returns</h4>
+        <p>Hassle-free replacement</p>
+      </div>
+    </div>
+    <div class="badge-item">
+      <i class="fas fa-shield-halved"></i>
+      <div>
+        <h4>100% Verified Checkout</h4>
+        <p>Direct WhatsApp Processing</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Category Filter Buttons -->
+  <div class="category-bar container">
+    <button class="cat-btn active" onclick="filterCategory('all')">All Drops</button>
+    <button class="cat-btn" onclick="filterCategory('tees')">Oversized Tees</button>
+    <button class="cat-btn" onclick="filterCategory('hoodies')">Hoodies</button>
+    <button class="cat-btn" onclick="filterCategory('acid')">Acid Wash</button>
+  </div>
+
+  <!-- Shop Grid Section -->
+  <section id="shop" class="shop-section">
+    <div class="container">
+      <h2 class="section-title">Featured Drops</h2>
+
+      <div class="product-grid">
+
+        <!-- Product 1 -->
+        <div class="product-card" data-category="tees">
+          <div class="product-badge red">Bestseller</div>
+          <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80" alt="Heavyweight Black Tee">
+          <div class="product-info">
+            <span class="brand-subtitle">QYRO® Original</span>
+            <h3>Heavyweight Oversized Black Tee</h3>
+            <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(124)</span></div>
+            <div class="size-picker">
+              <label>Fit:</label>
+              <select id="size-p1"><option value="S">S</option><option value="M" selected>M</option><option value="L">L</option><option value="XL">XL</option></select>
+            </div>
+            <a href="javascript:void(0)" onclick="openSizeChart()" class="size-chart-link">📏 Size Guide</a>
+            <div class="price-container"><span class="price">₹699</span><span class="original-price">₹1,299</span><span class="discount">46% OFF</span></div>
+            <button class="buy-btn" onclick="orderOnWhatsApp('Heavyweight Oversized Black Tee', '699', 'size-p1')"><i class="fab fa-whatsapp"></i> Buy Now</button>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card" data-category="hoodies">
+          <div class="product-badge yellow">Hot Drop</div>
+          <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=600&q=80" alt="Fleece Hoodie">
+          <div class="product-info">
+            <span class="brand-subtitle">QYRO® Winter</span>
+            <h3>Aesthetic Streetwear Fleece Hoodie</h3>
+            <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(89)</span></div>
+            <div class="size-picker">
+              <label>Fit:</label>
+              <select id="size-p2"><option value="S">S</option><option value="M">M</option><option value="L" selected>L</option><option value="XL">XL</option></select>
+            </div>
+            <a href="javascript:void(0)" onclick="openSizeChart()" class="size-chart-link">📏 Size Guide</a>
+            <div class="price-container"><span class="price">₹1,299</span><span class="original-price">₹2,499</span><span class="discount">48% OFF</span></div>
+            <button class="buy-btn" onclick="orderOnWhatsApp('Aesthetic Streetwear Fleece Hoodie', '1299', 'size-p2')"><i class="fab fa-whatsapp"></i> Buy Now</button>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card" data-category="acid">
+          <div class="product-badge green">Trending</div>
+          <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=600&q=80" alt="Acid Wash Graphic Tee">
+          <div class="product-info">
+            <span class="brand-subtitle">QYRO® Edition</span>
+            <h3>Acid Wash Aesthetic Graphic Tee</h3>
+            <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i> <span>(56)</span></div>
+            <div class="size-picker">
+              <label>Fit:</label>
+              <select id="size-p3"><option value="S">S</option><option value="M" selected>M</option><option value="L">L</option><option value="XL">XL</option></select>
+            </div>
+            <a href="javascript:void(0)" onclick="openSizeChart()" class="size-chart-link">📏 Size Guide</a>
+            <div class="price-container"><span class="price">₹799</span><span class="original-price">₹1,499</span><span class="discount">46% OFF</span></div>
+            <button class="buy-btn" onclick="orderOnWhatsApp('Acid Wash Aesthetic Graphic Tee', '799', 'size-p3')"><i class="fab fa-whatsapp"></i> Buy Now</button>
+          </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card" data-category="tees">
+          <div class="product-badge red">Limited</div>
+          <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=600&q=80" alt="Drop Shoulder White Tee">
+          <div class="product-info">
+            <span class="brand-subtitle">QYRO® Basics</span>
+            <h3>Minimalist Drop-Shoulder White Tee</h3>
+            <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(98)</span></div>
+            <div class="size-picker">
+              <label>Fit:</label>
+              <select id="size-p4"><option value="S">S</option><option value="M">M</option><option value="L" selected>L</option><option value="XL">XL</option></select>
+            </div>
+            <a href="javascript:void(0)" onclick="openSizeChart()" class="size-chart-link">📏 Size Guide</a>
+            <div class="price-container"><span class="price">₹649</span><span class="original-price">₹1,199</span><span class="discount">45% OFF</span></div>
+            <button class="buy-btn" onclick="orderOnWhatsApp('Minimalist Drop-Shoulder White Tee', '649', 'size-p4')"><i class="fab fa-whatsapp"></i> Buy Now</button>
+          </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="product-card" data-category="hoodies">
+          <div class="product-badge yellow">Popular</div>
+          <img src="https://images.unsplash.com/photo-1509967419530-da38b4704bc6?auto=format&fit=crop&w=600&q=80" alt="Cyberpunk Printed Hoodie">
+          <div class="product-info">
+            <span class="brand-subtitle">QYRO® Winter</span>
+            <h3>Cyberpunk Printed Heavyweight Hoodie</h3>
+            <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(142)</span></div>
+            <div class="size-picker">
+              <label>Fit:</label>
+              <select id="size-p5"><option value="S">S</option><option value="M">M</option><option value="L" selected>L</option><option value="XL">XL</option></select>
+            </div>
+            <a href="javascript:void(0)" onclick="openSizeChart()" class="size-chart-link">📏 Size Guide</a>
+            <div class="price-container"><span class="price">₹1,399</span><span class="original-price">₹2,699</span><span class="discount">48% OFF</span></div>
+            <button class="buy-btn" onclick="orderOnWhatsApp('Cyberpunk Printed Heavyweight Hoodie', '1399', 'size-p5')"><i class="fab fa-whatsapp"></i> Buy Now</button>
+          </div>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="product-card" data-category="tees">
+          <div class="product-badge green">New</div>
+          <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=600&q=80" alt="Anime Graphic Oversized Tee">
+          <div class="product-info">
+            <span class="brand-subtitle">QYRO® Anime</span>
+            <h3>Tokyo Drift Anime Oversized Tee</h3>
+            <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(210)</span></div>
+            <div class="size-picker">
+              <label>Fit:</label>
+              <select id="size-p6"><option value="S">S</option><option value="M" selected>M</option><option value="L">L</option><option value="XL">XL</option></select>
+            </div>
+            <a href="javascript:void(0)" onclick="openSizeChart()" class="size-chart-link">📏 Size Guide</a>
+            <div class="price-container"><span class="price">₹749</span><span class="original-price">₹1,399</span><span class="discount">46% OFF</span></div>
+            <button class="buy-btn" onclick="orderOnWhatsApp('Tokyo Drift Anime Oversized Tee', '749', 'size-p6')"><i class="fab fa-whatsapp"></i> Buy Now</button>
+          </div>
+        </div>
+
+        <!-- Product 7 -->
+        <div class="product-card" data-category="acid">
+          <div class="product-badge red">Must Have</div>
+          <img src="https://images.unsplash.com/photo-1576995853123-5a10305d93c0?auto=format&fit=crop&w=600&q=80" alt="Vintage Charcoal Acid Tee">
+          <div class="product-info">
+            <span class="brand-subtitle">QYRO® Vintage</span>
+            <h3>Vintage Charcoal Acid Wash Tee</h3>
+            <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(77)</span></div>
+            <div class="size-picker">
+              <label>Fit:</label>
+              <select id="size-p7"><option value="S">S</option><option value="M">M</option><option value="L" selected>L</option><option value="XL">XL</option></select>
+            </div>
+            <a href="javascript:void(0)" onclick="openSizeChart()" class="size-chart-link">📏 Size Guide</a>
+            <div class="price-container"><span class="price">₹849</span><span class="original-price">₹1,599</span><span class="discount">47% OFF</span></div>
+            <button class="buy-btn" onclick="orderOnWhatsApp('Vintage Charcoal Acid Wash Tee', '849', 'size-p7')"><i class="fab fa-whatsapp"></i> Buy Now</button>
+          </div>
+        </div>
+
+        <!-- Product 8 -->
+        <div class="product-card" data-category="tees">
+          <div class="product-badge yellow">Hot</div>
+          <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&w=600&q=80" alt="Beige Oversized Streetwear Tee">
+          <div class="product-info">
+            <span class="brand-subtitle">QYRO® Earth</span>
+            <h3>Aesthetic Beige Drop-Shoulder Tee</h3>
+            <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i> <span>(63)</span></div>
+            <div class="size-picker">
+              <label>Fit:</label>
+              <select id="size-p8"><option value="S">S</option><option value="M" selected>M</option><option value="L">L</option><option value="XL">XL</option></select>
+            </div>
+            <a href="javascript:void(0)" onclick="openSizeChart()" class="size-chart-link">📏 Size Guide</a>
+            <div class="price-container"><span class="price">₹699</span><span class="original-price">₹1,299</span><span class="discount">46% OFF</span></div>
+            <button class="buy-btn" onclick="orderOnWhatsApp('Aesthetic Beige Drop-Shoulder Tee', '699', 'size-p8')"><i class="fab fa-whatsapp"></i> Buy Now</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Accordion FAQ Section -->
+  <section id="faq" class="faq-section container">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="faq-container">
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          How do I place an order? <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          Select your size on any product and click "Buy Now". You will be redirected to our official WhatsApp chat with pre-filled details to finalize your address and payment.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          What is the fabric quality? <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          All QYRO® t-shirts are made from 240 GSM 100% Super Combed Cotton. Our hoodies feature 350 GSM premium fleece lining for ultimate warmth and aesthetic drape.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          How long does delivery take? <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          Orders are processed within 24 hours. Delivery takes 3-6 business days depending on your delivery pincode across India.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIP Club Newsletter -->
+  <section class="newsletter-section">
+    <div class="container">
+      <h2>Join The QYRO® VIP Club</h2>
+      <p>Subscribe to unlock secret drops, early discounts & 15% OFF your first order.</p>
+      <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Welcome to QYRO VIP Club!');">
+        <input type="email" placeholder="Enter your email address" required>
+        <button type="submit">Unlock 15% OFF</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Size Chart Modal Popup -->
+  <div id="sizeChartModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeSizeChart()">&times;</span>
+      <h3 style="color:#ffc107;">QYRO® Official Size Guide (Inches)</h3>
+      <table class="size-table">
+        <thead>
+          <tr><th>Size</th><th>Chest</th><th>Length</th><th>Shoulder</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>S</td><td>38"</td><td>27"</td><td>18"</td></tr>
+          <tr><td>M</td><td>40"</td><td>28"</td><td>19"</td></tr>
+          <tr><td>L</td><td>42"</td><td>29"</td><td>20"</td></tr>
+          <tr><td>XL</td><td>44"</td><td>30"</td><td>21"</td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
 
-  <!-- Product 2 -->
-  <div class="product-card" data-category="hoodies">
-    <div class="product-badge yellow">Hot Drop</div>
-    <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=600&q=80" alt="Fleece Hoodie">
-    <div class="product-info">
-      <span class="brand-subtitle">QYRO® Winter</span>
-      <h3>Aesthetic Streetwear Fleece Hoodie</h3>
-      <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(89)</span></div>
-      <div class="size-picker">
-        <label>Fit:</label>
-        <select id="size-p2"><option value="S">S</option><option value="M">M</option><option value="L" selected>L</option><option value="XL">XL</option></select>
+  <!-- Contact & Footer -->
+  <section id="contact" class="contact-section container">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Connect With QYRO®</h3>
+        <p>Got queries about sizing, custom bulk orders, or tracking?</p>
+        <p style="margin-top:10px;">Email: support@qyro.in</p>
+        <div class="social-links">
+          <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        </div>
       </div>
-      <a href="javascript:void(0)" onclick="openSizeChart()" class="size-chart-link">📏 Size Guide</a>
-      <div class="price-container"><span class="price">₹1,299</span><span class="original-price">₹2,499</span><span class="discount">48% OFF</span></div>
-      <button class="buy-btn" onclick="orderOnWhatsApp('Aesthetic Streetwear Fleece Hoodie', '1299', 'size-p2')"><i class="fab fa-whatsapp"></i> Buy Now</button>
+      <form class="contact-form" action="https://formspree.io/f/xkjnlvqz" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" rows="3" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
     </div>
-  </div>
+  </section>
 
-  <!-- Product 3 -->
-  <div class="product-card" data-category="acid">
-    <div class="product-badge green">Trending</div>
-    <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=600&q=80" alt="Acid Wash Graphic Tee">
-    <div class="product-info">
-      <span class="brand-subtitle">QYRO® Edition</span>
-      <h3>Acid Wash Aesthetic Graphic Tee</h3>
-      <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i> <span>(56)</span></div>
-      <div class="size-picker">
-        <label>Fit:</label>
-        <select id="size-p3"><option value="S">S</option><option value="M" selected>M</option><option value="L">L</option><option value="XL">XL</option></select>
-      </div>
-      <a href="javascript:void(0)" onclick="openSizeChart()" class="size-chart-link">📏 Size Guide</a>
-      <div class="price-container"><span class="price">₹799</span><span class="original-price">₹1,499</span><span class="discount">46% OFF</span></div>
-      <button class="buy-btn" onclick="orderOnWhatsApp('Acid Wash Aesthetic Graphic Tee', '799', 'size-p3')"><i class="fab fa-whatsapp"></i> Buy Now</button>
-    </div>
-  </div>
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/91YOUR_REAL_NUMBER?text=Hi%20QYRO%20Team,%20I%20have%20a%20query" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
 
-  <!-- Product 4 -->
-  <div class="product-card" data-category="tees">
-    <div class="product-badge red">Limited</div>
-    <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=600&q=80" alt="Drop Shoulder White Tee">
-    <div class="product-info">
-      <span class="brand-subtitle">QYRO® Basics</span>
-      <h3>Minimalist Drop-Shoulder White Tee</h3>
-      <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(98)</span></div>
-      <div class="size-picker">
-        <label>Fit:</label>
-        <select id="size-p4"><option value="S">S</option><option value="M">M</option><option value="L" selected>L</option><option value="XL">XL</option></select>
-      </div>
-      <a href="javascript:void(0)" onclick="openSizeChart()" class="size-chart-link">📏 Size Guide</a>
-      <div class="price-container"><span class="price">₹649</span><span class="original-price">₹1,199</span><span class="discount">45% OFF</span></div>
-      <button class="buy-btn" onclick="orderOnWhatsApp('Minimalist Drop-Shoulder White Tee', '649', 'size-p4')"><i class="fab fa-whatsapp"></i> Buy Now</button>
-    </div>
-  </div>
+  <footer>
+    <p>&copy; 2026 QYRO®. All Rights Reserved.</p>
+  </footer>
 
-  <!-- Product 5 -->
-  <div class="product-card" data-category="hoodies">
-    <div class="product-badge yellow">Popular</div>
-    <img src="https://images.unsplash.com/photo-1509967419530-da38b4704bc6?auto=format&fit=crop&w=600&q=80" alt="Cyberpunk Printed Hoodie">
-    <div class="product-info">
-      <span class="brand-subtitle">QYRO® Winter</span>
-      <h3>Cyberpunk Printed Heavyweight Hoodie</h3>
-      <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(142)</span></div>
-      <div class="size-picker">
-        <label>Fit:</label>
-        <select id="size-p5"><option value="S">S</option><option value="M">M</option><option value="L" selected>L</option><option value="XL">XL</option></select>
-      </div>
-      <a href="javascript:void(0)" onclick="openSizeChart()" class="size-chart-link">📏 Size Guide</a>
-      <div class="price-container"><span class="price">₹1,399</span><span class="original-price">₹2,699</span><span class="discount">48% OFF</span></div>
-      <button class="buy-btn" onclick="orderOnWhatsApp('Cyberpunk Printed Heavyweight Hoodie', '1399', 'size-p5')"><i class="fab fa-whatsapp"></i> Buy Now</button>
-    </div>
-  </div>
+  <!-- Embedded JavaScript Logic -->
+  <script>
+    // ⚠️ REPLACE WITH YOUR ACTUAL 10-DIGIT WHATSAPP NUMBER (WITH 91 PREFIX)
+    const whatsappNumber = "91YOUR_REAL_NUMBER";
 
-  <!-- Product 6 -->
-  <div class="product-card" data-category="tees">
-    <div class="product-badge green">New</div>
-    <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=600&q=80" alt="Anime Graphic Oversized Tee">
-    <div class="product-info">
-      <span class="brand-subtitle">QYRO® Anime</span>
-      <h3>Tokyo Drift Anime Oversized Tee</h3>
-      <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(210)</span></div>
-      <div class="size-picker">
-        <label>Fit:</label>
-        <select id="size-p6"><option value="S">S</option><option value="M" selected>M</option><option value="L">L</option><option value="XL">XL</option></select>
-      </div>
-      <a href="javascript:void(0)" onclick="openSizeChart()" class="size-chart-link">📏 Size Guide</a>
-      <div class="price-container"><span class="price">₹749</span><span class="original-price">₹1,399</span><span class="discount">46% OFF</span></div>
-      <button class="buy-btn" onclick="orderOnWhatsApp('Tokyo Drift Anime Oversized Tee', '749', 'size-p6')"><i class="fab fa-whatsapp"></i> Buy Now</button>
-    </div>
-  </div>
+    function orderOnWhatsApp(productName, price, sizeSelectId) {
+      const selectedSize = document.getElementById(sizeSelectId).value;
+      const message = `Hi QYRO Team! I want to order:\n\n📌 Product: ${productName}\n📏 Size: ${selectedSize}\n💰 Price: ₹${price}\n\nPlease process my order!`;
+      window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
+    }
 
-  <!-- Product 7 -->
-  <div class="product-card" data-category="acid">
-    <div class="product-badge red">Must Have</div>
-    <img src="https://images.unsplash.com/photo-1576995853123-5a10305d93c0?auto=format&fit=crop&w=600&q=80" alt="Vintage Charcoal Acid Tee">
-    <div class="product-info">
-      <span class="brand-subtitle">QYRO® Vintage</span>
-      <h3>Vintage Charcoal Acid Wash Tee</h3>
-      <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(77)</span></div>
-      <div class="size-picker">
-        <label>Fit:</label>
-        <select id="size-p7"><option value="S">S</option><option value="M">M</option><option value="L" selected>L</option><option value="XL">XL</option></select>
-      </div>
-      <a href="javascript:void(0)" onclick="openSizeChart()" class="size-chart-link">📏 Size Guide</a>
-      <div class="price-container"><span class="price">₹849</span><span class="original-price">₹1,599</span><span class="discount">47% OFF</span></div>
-      <button class="buy-btn" onclick="orderOnWhatsApp('Vintage Charcoal Acid Wash Tee', '849', 'size-p7')"><i class="fab fa-whatsapp"></i> Buy Now</button>
-    </div>
-  </div>
+    // Live Countdown Timer Logic
+    let duration = 5 * 3600 + 30 * 60;
+    setInterval(() => {
+      let h = Math.floor(duration / 3600);
+      let m = Math.floor((duration % 3600) / 60);
+      let s = duration % 60;
+      document.getElementById('countdown-timer').textContent = 
+        `${h<10?'0':''}${h}h ${m<10?'0':''}${m}m ${s<10?'0':''}${s}s`;
+      if(duration > 0) duration--;
+    }, 1000);
 
-  <!-- Product 8 -->
-  <div class="product-card" data-category="tees">
-    <div class="product-badge yellow">Hot</div>
-    <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&w=600&q=80" alt="Beige Oversized Streetwear Tee">
-    <div class="product-info">
-      <span class="brand-subtitle">QYRO® Earth</span>
-      <h3>Aesthetic Beige Drop-Shoulder Tee</h3>
-      <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i> <span>(63)</span></div>
-      <div class="size-picker">
-        <label>Fit:</label>
-        <select id="size-p8"><option value="S">S</option><option value="M" selected>M</option><option value="L">L</option><option value="XL">XL</option></select>
-      </div>
-      <a href="javascript:void(0)" onclick="openSizeChart()" class="size-chart-link">📏 Size Guide</a>
-      <div class="price-container"><span class="price">₹699</span><span class="original-price">₹1,299</span><span class="discount">46% OFF</span></div>
-      <button class="buy-btn" onclick="orderOnWhatsApp('Aesthetic Beige Drop-Shoulder Tee', '699', 'size-p8')"><i class="fab fa-whatsapp"></i> Buy Now</button>
-    </div>
-  </div>
+    // Dynamic Category Filter Logic
+    function filterCategory(cat) {
+      document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      document.querySelectorAll('.product-card').forEach(card => {
+        if (cat === 'all' || card.getAttribute('data-category') === cat) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    }
 
-  <!-- Product 9 -->
-  <div class="product-card" data-category="hoodies">
-    <div class="product-badge green">Top Rated</div>
-    <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=600&q=80" alt="Zip-Up Oversized Hoodie">
-    <div class="product-info">
-      <span class="brand-subtitle">QYRO® Outerwear</span>
-      <h3>Heavy Duty Black Zip-Up Hoodie</h3>
-      <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(185)</span></div>
-      <div class="size-picker">
-        <label>Fit:</label>
-        <select id="size-p9"><option value="S">S</option><option value="M">M</option><option value="L" selected>L</option><option value="XL">XL</option></select>
-      </div>
-      <a href="javascript:void(0)" onclick="openSizeChart()" class="size-chart-link">📏 Size Guide</a>
-      <div class="price-container"><span class="price">₹1,499</span><span class="original-price">₹2,899</span><span class="discount">48% OFF</span></div>
-      <button class="buy-btn" onclick="orderOnWhatsApp('Heavy Duty Black Zip-Up Hoodie', '1499', 'size-p9')"><i class="fab fa-whatsapp"></i> Buy Now</button>
-    </div>
-  </div>
+    // Real-Time Product Search
+    function searchProducts() {
+      let filter = document.getElementById('searchInput').value.toLowerCase();
+      document.querySelectorAll('.product-card').forEach(card => {
+        let title = card.querySelector('h3').textContent.toLowerCase();
+        card.style.display = title.includes(filter) ? "block" : "none";
+      });
+    }
 
-  <!-- Product 10 -->
-  <div class="product-card" data-category="tees">
-    <div class="product-badge red">Limited</div>
-    <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?auto=format&fit=crop&w=600&q=80" alt="Back Printed Streetwear Tee">
-    <div class="product-info">
-      <span class="brand-subtitle">QYRO® Signature</span>
-      <h3>Cyber Back-Print Oversized Tee</h3>
-      <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(115)</span></div>
-      <div class="size-picker">
-        <label>Fit:</label>
-        <select id="size-p10"><option value="S">S</option><option value="M" selected>M</option><option value="L">L</option><option value="XL">XL</option></select>
-      </div>
-      <a href="javascript:void(0)" onclick="openSizeChart()" class="size-chart-link">📏 Size Guide</a>
-      <div class="price-container"><span class="price">₹799</span><span class="original-price">₹1,499</span><span class="discount">46% OFF</span></div>
-      <button class="buy-btn" onclick="orderOnWhatsApp('Cyber Back-Print Oversized Tee', '799', 'size-p10')"><i class="fab fa-whatsapp"></i> Buy Now</button>
-    </div>
-  </div>
+    // FAQ Collapsible Accordion
+    function toggleFaq(element) {
+      const item = element.parentElement;
+      item.classList.toggle('active');
+    }
 
-  <!-- Product 11 -->
-  <div class="product-card" data-category="hoodies">
-    <div class="product-badge yellow">Trending</div>
-    <img src="https://images.unsplash.com/photo-1578587018452-892bacefd3f2?auto=format&fit=crop&w=600&q=80" alt="Pastel Oversized Sweatshirt">
-    <div class="product-info">
-      <span class="brand-subtitle">QYRO® Comfort</span>
-      <h3>Minimalist Pastel Crewneck Sweatshirt</h3>
-      <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i> <span>(92)</span></div>
-      <div class="size-picker">
-        <label>Fit:</label>
-        <select id="size-p11"><option value="S">S</option><option value="M">M</option><option value="L" selected>L</option><option value="XL">XL</option></select>
-      </div>
-      <a href="javascript:void(0)" onclick="openSizeChart()" class="size-chart-link">📏 Size Guide</a>
-      <div class="price-container"><span class="price">₹1,199</span><span class="original-price">₹2,199</span><span class="discount">45% OFF</span></div>
-      <button class="buy-btn" onclick="orderOnWhatsApp('Minimalist Pastel Crewneck Sweatshirt', '1199', 'size-p11')"><i class="fab fa-whatsapp"></i> Buy Now</button>
-    </div>
-  </div>
-
-  <!-- Product 12 -->
-  <div class="product-card" data-category="acid">
-    <div class="product-badge green">New Drop</div>
-    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80" alt="Relaxed Fit Cargo Pants">
-    <div class="product-info">
-      <span class="brand-subtitle">QYRO® Bottoms</span>
-      <h3>Tactical Relaxed Streetwear Cargo Pants</h3>
-      <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(104)</span></div>
-      <div class="size-picker">
-        <label>Fit:</label>
-        <select id="size-p12"><option value="30">30 Waist</option><option value="32" selected>32 Waist</option><option value="34">34 Waist</option><option value="36">36 Waist</option></select>
-      </div>
-      <a href="javascript:void(0)" onclick="openSizeChart()" class="size-chart-link">📏 Size Guide</a>
-      <div class="price-container"><span class="price">₹1,599</span><span class="original-price">₹2,999</span><span class="discount">46% OFF</span></div>
-      <button class="buy-btn" onclick="orderOnWhatsApp('Tactical Relaxed Streetwear Cargo Pants', '1599', 'size-p12')"><i class="fab fa-whatsapp"></i> Buy Now</button>
-    </div>
-  </div>
-
-</div>
+    // Modal Size Chart Functions
+    function openSizeChart() { document.getElementById("sizeChartModal").style.display = "flex"; }
+    function closeSizeChart() { document.getElementById("sizeChartModal").style.display = "none"; }
+  </script>
+</body>
+</html>

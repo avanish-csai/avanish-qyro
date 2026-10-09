@@ -4,403 +4,227 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="QYRO - Discover your style with modern T-shirts, hoodies, jeans and cargo.">
-  <title>QYRO | Wear Your Identity</title>
+  <title>QYRO® | Official Streetwear Store</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-
 <body>
-  <!-- Header -->
-  <header class="header">
-    <a href="#" class="logo">QYRO<span>.</span></a>
+  <div class="top-banner">
+    🔥 50 NEW STREETWEAR DROPS LOADED | FREE SHIPPING ON ALL ORDERS ABOVE ₹999
+  </div>
 
+  <header>
     <nav class="navbar">
-      <a href="#home">Home</a>
-      <a href="#products">Collection</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
+      <a href="#" class="logo">QYRO®</a>
 
-    <a href="#products" class="header-btn">Shop Now ↗</a>
+      <div class="search-container">
+        <input type="text" id="searchInput" oninput="searchProducts()" placeholder="Search from 50+ items (e.g. Anime, Hoodies, Acid Wash)...">
+        <button type="button" aria-label="Search"><i class="fas fa-search"></i></button>
+      </div>
+
+      <div class="header-actions">
+        <ul class="nav-links">
+          <li><a href="#shop">Collection</a></li>
+          <li><a href="#shop">Tees</a></li>
+          <li><a href="#shop">Hoodies</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+    </nav>
   </header>
 
-  <!-- Hero Section -->
-  <main>
-    <section class="hero" id="home">
-      <div class="hero-content">
-        <p class="eyebrow">NEW GENERATION. NEW STYLE.</p>
-        <h1>WEAR YOUR<br><span>IDENTITY.</span></h1>
-        <p class="hero-description">
-          Discover your style with QYRO. Modern streetwear
-          made for people who choose to stand out.
-        </p>
+  <div class="category-bar container">
+    <button class="cat-btn active" onclick="filterCategory('all', this)">All Drops (50)</button>
+    <button class="cat-btn" onclick="filterCategory('tees', this)">Oversized Tees</button>
+    <button class="cat-btn" onclick="filterCategory('hoodies', this)">Hoodies & Sweatshirts</button>
+    <button class="cat-btn" onclick="filterCategory('acid', this)">Acid Wash</button>
+    <button class="cat-btn" onclick="filterCategory('bottoms', this)">Bottom Wear & Cargos</button>
+  </div>
 
-        <div class="hero-buttons">
-          <a href="#products" class="btn btn-primary">Explore Collection ↗</a>
-          <a href="#about" class="btn btn-outline">Our Story</a>
-        </div>
-
-        <div class="hero-stats">
-          <div><strong>50+</strong><span>Style Options</span></div>
-          <div><strong>QYRO</strong><span>Own Your Style</span></div>
-        </div>
-      </div>
-
-      <div class="hero-image">
-        <img
-          src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=1000&q=85"
-          alt="Modern streetwear collection"
-        >
-        <div class="image-label">
-          <span>QYRO COLLECTION</span>
-          <strong>STYLE THAT SPEAKS.</strong>
-        </div>
-      </div>
-    </section>
-
-    <!-- Benefits -->
-    <section class="benefits">
-      <div>✦ Modern Streetwear</div>
-      <div>✦ Everyday Comfort</div>
-      <div>✦ Express Your Style</div>
-      <div>✦ Find Your Fit</div>
-    </section>
-
-    <!-- Products -->
-    <section class="products-section" id="products">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">FIND YOUR LOOK</p>
-          <h2>THE COLLECTION<span>.</span></h2>
-          <p class="section-description">
-            Explore the latest styles from QYRO.
-          </p>
-        </div>
-      </div>
-
-      <!-- Search -->
-      <div class="search-wrapper">
-        <input
-          type="search"
-          id="searchInput"
-          placeholder="Search T-shirts, hoodies, jeans..."
-          aria-label="Search products"
-        >
-      </div>
-
-      <!-- Category Filters -->
-      <div class="filter-buttons" id="filterButtons">
-        <button class="filter-btn active" data-category="All">All</button>
-        <button class="filter-btn" data-category="T-Shirts">T-Shirts</button>
-        <button class="filter-btn" data-category="Hoodies">Hoodies</button>
-        <button class="filter-btn" data-category="Jeans">Jeans</button>
-        <button class="filter-btn" data-category="Cargo">Cargo</button>
-      </div>
-
-      <div class="product-grid" id="productGrid"></div>
-      <p class="no-results" id="noResults" hidden>
-        No products found. Try another search.
-      </p>
-    </section>
-
-    <!-- About -->
-    <section class="about-section" id="about">
-      <div class="about-image">
-        <img
-          src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1000&q=85"
-          alt="Fashion streetwear inspiration"
-          loading="lazy"
-        >
-      </div>
-
-      <div class="about-content">
-        <p class="eyebrow">MORE THAN CLOTHING</p>
-        <h2>YOUR STYLE.<br>YOUR RULES<span>.</span></h2>
-        <p>
-          QYRO is about expressing yourself through what you wear.
-          Explore versatile styles, build your own look and make
-          every outfit your own.
-        </p>
-        <a href="#products" class="btn btn-primary">Discover QYRO ↗</a>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section class="contact-section" id="contact">
-      <div class="contact-intro">
-        <p class="eyebrow">LET'S CONNECT</p>
-        <h2>HAVE A<br><span>QUESTION?</span></h2>
-        <p>
-          Send us a message about products, orders or anything
-          else you would like to know.
-        </p>
-        <a
-          class="contact-link"
-          href="mailto:awanish630684@gmail.com"
-        >
-          ✉ awanish630684@gmail.com
-        </a>
-      </div>
-
-      <form id="contactForm" class="contact-form">
-        <label for="customerName">Your name</label>
-        <input
-          type="text"
-          id="customerName"
-          name="name"
-          placeholder="Enter your name"
-          required
-        >
-
-        <label for="customerEmail">Email address</label>
-        <input
-          type="email"
-          id="customerEmail"
-          name="email"
-          placeholder="Enter your email"
-          required
-        >
-
-        <label for="customerSubject">Subject</label>
-        <input
-          type="text"
-          id="customerSubject"
-          name="subject"
-          placeholder="What is your message about?"
-          required
-        >
-
-        <label for="customerMessage">Message</label>
-        <textarea
-          id="customerMessage"
-          name="message"
-          rows="5"
-          placeholder="Write your message here..."
-          required
-        ></textarea>
-
-        <button type="submit" class="btn btn-primary" id="sendButton">
-          Send Message ↗
-        </button>
-
-        <p id="sendStatus" class="form-status" role="status"></p>
-      </form>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <a href="#home" class="logo">QYRO<span>.</span></a>
-    <p>Wear your identity. Own your style.</p>
-    <div class="footer-links">
-      <a href="#home">Home</a>
-      <a href="#products">Collection</a>
-      <a href="#contact">Contact</a>
+  <section id="shop" class="shop-section container">
+    <div class="section-title">
+      <span>Official Catalog</span>
+      <span class="item-count" id="visible-count">Showing 50 Products</span>
     </div>
-    <p class="copyright">
-      © <span id="currentYear"></span> QYRO. All rights reserved.
-    </p>
+    <div class="product-grid" id="main-product-grid"></div>
+  </section>
+
+  <section id="contact" class="contact-section container">
+    <div class="contact-header">
+      <h2>Contact Us</h2>
+      <p>Got questions or custom orders? Reach out to us anytime!</p>
+    </div>
+
+    <div class="contact-container">
+      <div class="contact-info-card">
+        <h3>Get in Touch</h3>
+        <p><strong>Email:</strong> support@qyro.com</p>
+        <p><strong>Location:</strong> India</p>
+        <div class="social-links">
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="contact-form-card">
+        <form onsubmit="handleMailSend(event)">
+          <input type="text" id="custName" placeholder="Your Name" required>
+          <input type="email" id="custEmail" placeholder="Your Email" required>
+          <textarea id="custMsg" placeholder="Your Message" required></textarea>
+          <button type="submit" class="send-btn">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <a href="https://wa.me/91YOUR_REAL_NUMBER?text=Hi%20QYRO%20Team%2C%20I%20have%20a%20query" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <footer>
+    <p>&copy; 2026 QYRO®. All 50 Items Crafted for Comfort & Street Culture.</p>
   </footer>
 
   <script>
-    // Product data
-    const products = [
-      { name: "Classic Black Tee", category: "T-Shirts", price: 499, image: "photo-1521572163474-6864f9cf17ab" },
-      { name: "Essential White Tee", category: "T-Shirts", price: 449, image: "photo-1503341504253-dff4815485f1" },
-      { name: "Street Graphic Tee", category: "T-Shirts", price: 599, image: "photo-1523381210434-271e8be1f52b" },
-      { name: "Oversized Urban Tee", category: "T-Shirts", price: 649, image: "photo-1503342217505-b0a15ec3261c" },
-      { name: "Minimal Logo Tee", category: "T-Shirts", price: 399, image: "photo-1521572163474-6864f9cf17ab" },
-      { name: "Everyday Cotton Tee", category: "T-Shirts", price: 499, image: "photo-1512436991641-6745cdb1723f" },
-      { name: "Retro Print Tee", category: "T-Shirts", price: 599, image: "photo-1503341504253-dff4815485f1" },
-      { name: "Premium Fit Tee", category: "T-Shirts", price: 699, image: "photo-1523381210434-271e8be1f52b" },
-      { name: "Monochrome Tee", category: "T-Shirts", price: 499, image: "photo-1521572163474-6864f9cf17ab" },
-      { name: "Weekend Tee", category: "T-Shirts", price: 449, image: "photo-1512436991641-6745cdb1723f" },
+    // Replace with your WhatsApp country code + number, digits only.
+    const whatsappNumber = "91YOUR_REAL_NUMBER";
 
-      { name: "Classic Black Hoodie", category: "Hoodies", price: 999, image: "photo-1556821840-3a63f95609a7" },
-      { name: "Essential Grey Hoodie", category: "Hoodies", price: 1099, image: "photo-1556821840-3a63f95609a7" },
-      { name: "Urban Oversized Hoodie", category: "Hoodies", price: 1299, image: "photo-1578681994506-b8f463449011" },
-      { name: "Minimal Pullover", category: "Hoodies", price: 899, image: "photo-1556821840-3a63f95609a7" },
-      { name: "Street Graphic Hoodie", category: "Hoodies", price: 1199, image: "photo-1578681994506-b8f463449011" },
-      { name: "Everyday Zip Hoodie", category: "Hoodies", price: 1099, image: "photo-1556821840-3a63f95609a7" },
-      { name: "Premium Comfort Hoodie", category: "Hoodies", price: 1399, image: "photo-1578681994506-b8f463449011" },
-      { name: "Relaxed Fit Hoodie", category: "Hoodies", price: 1199, image: "photo-1556821840-3a63f95609a7" },
-      { name: "Winter Essential Hoodie", category: "Hoodies", price: 1299, image: "photo-1578681994506-b8f463449011" },
-      { name: "QYRO Signature Hoodie", category: "Hoodies", price: 1499, image: "photo-1556821840-3a63f95609a7" },
-
-      { name: "Classic Blue Jeans", category: "Jeans", price: 1199, image: "photo-1542272604-787c3835535d" },
-      { name: "Slim Fit Denim", category: "Jeans", price: 1299, image: "photo-1541099649105-f69ad21f3246" },
-      { name: "Relaxed Fit Jeans", category: "Jeans", price: 1399, image: "photo-1542272604-787c3835535d" },
-      { name: "Black Denim Jeans", category: "Jeans", price: 1299, image: "photo-1541099649105-f69ad21f3246" },
-      { name: "Straight Fit Denim", category: "Jeans", price: 1199, image: "photo-1542272604-787c3835535d" },
-      { name: "Urban Blue Denim", category: "Jeans", price: 1399, image: "photo-1541099649105-f69ad21f3246" },
-      { name: "Everyday Denim", category: "Jeans", price: 1099, image: "photo-1542272604-787c3835535d" },
-      { name: "Washed Black Jeans", category: "Jeans", price: 1499, image: "photo-1541099649105-f69ad21f3246" },
-      { name: "Modern Fit Jeans", category: "Jeans", price: 1299, image: "photo-1542272604-787c3835535d" },
-      { name: "Essential Denim", category: "Jeans", price: 1199, image: "photo-1541099649105-f69ad21f3246" },
-
-      { name: "Classic Black Cargo", category: "Cargo", price: 1299, image: "photo-1517438476312-10d79c077509" },
-      { name: "Olive Utility Cargo", category: "Cargo", price: 1399, image: "photo-1515886657613-9f3515b0c78f" },
-      { name: "Relaxed Fit Cargo", category: "Cargo", price: 1499, image: "photo-1517438476312-10d79c077509" },
-      { name: "Streetwear Cargo Pants", category: "Cargo", price: 1399, image: "photo-1515886657613-9f3515b0c78f" },
-      { name: "Urban Utility Pants", category: "Cargo", price: 1299, image: "photo-1517438476312-10d79c077509" },
-      { name: "Everyday Cargo", category: "Cargo", price: 1199, image: "photo-1515886657613-9f3515b0c78f" },
-      { name: "Tactical Style Cargo", category: "Cargo", price: 1599, image: "photo-1517438476312-10d79c077509" },
-      { name: "Minimal Cargo Pants", category: "Cargo", price: 1399, image: "photo-1515886657613-9f3515b0c78f" },
-      { name: "Wide Fit Cargo", category: "Cargo", price: 1499, image: "photo-1517438476312-10d79c077509" },
-      { name: "QYRO Signature Cargo", category: "Cargo", price: 1699, image: "photo-1515886657613-9f3515b0c78f" },
-
-      { name: "Street Essential Tee", category: "T-Shirts", price: 549, image: "photo-1521572163474-6864f9cf17ab" },
-      { name: "Daily Wear Tee", category: "T-Shirts", price: 449, image: "photo-1503341504253-dff4815485f1" },
-      { name: "Urban Layer Hoodie", category: "Hoodies", price: 1199, image: "photo-1556821840-3a63f95609a7" },
-      { name: "Signature Zip Hoodie", category: "Hoodies", price: 1399, image: "photo-1578681994506-b8f463449011" },
-      { name: "Modern Blue Denim", category: "Jeans", price: 1399, image: "photo-1542272604-787c3835535d" },
-      { name: "Black Street Denim", category: "Jeans", price: 1499, image: "photo-1541099649105-f69ad21f3246" },
-      { name: "Utility Street Cargo", category: "Cargo", price: 1499, image: "photo-1517438476312-10d79c077509" },
-      { name: "Relaxed Olive Cargo", category: "Cargo", price: 1399, image: "photo-1515886657613-9f3515b0c78f" },
-      { name: "Premium Oversized Tee", category: "T-Shirts", price: 699, image: "photo-1523381210434-271e8be1f52b" },
-      { name: "QYRO Everyday Hoodie", category: "Hoodies", price: 1299, image: "photo-1556821840-3a63f95609a7" }
+    const rawProducts = [
+      {name:"Tokyo Drift Cyberpunk Oversized Tee",cat:"tees",price:749,orig:1399,badge:"Hot Drop",badgeColor:"yellow",img:"https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80",rating:"4.9 (142)"},
+      {name:"Heavyweight Charcoal Fleece Hoodie",cat:"hoodies",price:1299,orig:2499,badge:"Bestseller",badgeColor:"red",img:"https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=600&q=80",rating:"4.8 (89)"},
+      {name:"Vintage Acid Wash Aesthetic Tee",cat:"acid",price:799,orig:1499,badge:"Trending",badgeColor:"green",img:"https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=600&q=80",rating:"4.7 (56)"},
+      {name:"Minimalist Drop-Shoulder White Tee",cat:"tees",price:649,orig:1199,badge:"Essential",badgeColor:"yellow",img:"https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=600&q=80",rating:"4.9 (98)"},
+      {name:"Tactical Multi-Pocket Cargo Pants",cat:"bottoms",price:1499,orig:2799,badge:"New Arrival",badgeColor:"green",img:"https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=600&q=80",rating:"4.8 (112)"},
+      {name:"Cyber Matrix Graphic Oversized Tee",cat:"tees",price:699,orig:1299,badge:"Hot Drop",badgeColor:"yellow",img:"https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=600&q=80",rating:"4.6 (67)"},
+      {name:"Oversized Beige Crewneck Sweatshirt",cat:"hoodies",price:1099,orig:1999,badge:"Winter Fit",badgeColor:"red",img:"https://images.unsplash.com/photo-1509967419530-da38b4704bc6?auto=format&fit=crop&w=600&q=80",rating:"4.9 (204)"},
+      {name:"Dark Metal Rock Graphic Acid Tee",cat:"acid",price:849,orig:1599,badge:"Limited",badgeColor:"red",img:"https://images.unsplash.com/photo-1576995853123-5a10305d93c0?auto=format&fit=crop&w=600&q=80",rating:"4.8 (77)"},
+      {name:"Relaxed Fit Sand Joggers",cat:"bottoms",price:1199,orig:2199,badge:"Comfort",badgeColor:"green",img:"https://images.unsplash.com/photo-1552902865-b72c031ac5ea?auto=format&fit=crop&w=600&q=80",rating:"4.7 (83)"},
+      {name:"Anime Samurai Oversized Tee Black",cat:"tees",price:749,orig:1399,badge:"Bestseller",badgeColor:"red",img:"https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&w=600&q=80",rating:"5.0 (310)"}
     ];
 
-    // Replace this with your own WhatsApp number.
-    // Format: country code + number, digits only.
-    const WHATSAPP_NUMBER = "91YOUR_REAL_NUMBER";
+    const categoriesList = ["tees","hoodies","acid","bottoms"];
+    const badgesList = ["Bestseller","Hot Drop","Trending","New Arrival","Limited Edition"];
+    const badgeColors = ["red","yellow","green"];
+    const fullProducts = [];
 
-    let activeCategory = "All";
+    for (let i = 1; i <= 50; i++) {
+      const template = rawProducts[(i - 1) % rawProducts.length];
+      const cat = categoriesList[(i - 1) % categoriesList.length];
 
-    const productGrid = document.getElementById("productGrid");
-    const searchInput = document.getElementById("searchInput");
-    const noResults = document.getElementById("noResults");
-    const filterButtons = document.getElementById("filterButtons");
-
-    function renderProducts() {
-      const searchTerm = searchInput.value.trim().toLowerCase();
-
-      const filteredProducts = products.filter(product => {
-        const matchesCategory =
-          activeCategory === "All" ||
-          product.category === activeCategory;
-
-        const matchesSearch =
-          product.name.toLowerCase().includes(searchTerm) ||
-          product.category.toLowerCase().includes(searchTerm);
-
-        return matchesCategory && matchesSearch;
+      fullProducts.push({
+        id: i,
+        name: i <= 10 ? template.name : `QYRO® Street Drop #${i} (${cat.toUpperCase()})`,
+        cat,
+        price: template.price + ((i % 5) * 50),
+        orig: template.orig + ((i % 5) * 100),
+        badge: badgesList[(i - 1) % badgesList.length],
+        badgeColor: badgeColors[(i - 1) % badgeColors.length],
+        img: template.img,
+        rating: `4.${8 - (i % 3)} (${40 + i * 3})`
       });
-
-      productGrid.innerHTML = filteredProducts.map(product => {
-        const imageUrl =
-          `https://images.unsplash.com/${product.image}?auto=format&fit=crop&w=700&q=80`;
-
-        const whatsappMessage = encodeURIComponent(
-          `Hello QYRO! I want to order ${product.name}. Price: ₹${product.price}. Please share the ordering details.`
-        );
-
-        const orderUrl =
-          `https://wa.me/${WHATSAPP_NUMBER}?text=${whatsappMessage}`;
-
-        return `
-          <article class="product-card">
-            <div class="product-image">
-              <img
-                src="${imageUrl}"
-                alt="${product.name}"
-                loading="lazy"
-              >
-              <span class="product-category">${product.category}</span>
-            </div>
-
-            <div class="product-info">
-              <h3>${product.name}</h3>
-
-              <div class="product-bottom">
-                <span class="product-price">₹${product.price}</span>
-                <a
-                  class="order-btn"
-                  href="${orderUrl}"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Order ${product.name} on WhatsApp"
-                >
-                  Order ↗
-                </a>
-              </div>
-            </div>
-          </article>
-        `;
-      }).join("");
-
-      noResults.hidden = filteredProducts.length !== 0;
     }
 
-    // Category filter
-    filterButtons.addEventListener("click", function(event) {
-      const button = event.target.closest(".filter-btn");
+    const grid = document.getElementById("main-product-grid");
 
-      if (!button) return;
+    grid.innerHTML = fullProducts.map(p => {
+      const discountPct = Math.round(((p.orig - p.price) / p.orig) * 100);
 
-      activeCategory = button.dataset.category;
+      return `
+        <div class="product-card" data-category="${p.cat}" data-title="${p.name.toLowerCase()}">
+          <div class="product-badge ${p.badgeColor}">${p.badge}</div>
+          <img src="${p.img}" alt="${p.name}" loading="lazy">
+          <div class="product-info">
+            <span class="brand-subtitle">QYRO® Streetwear</span>
+            <h3>${p.name}</h3>
+            <div class="rating"><i class="fas fa-star"></i> <span>${p.rating}</span></div>
+            <div class="size-picker">
+              <label for="size-${p.id}">Fit Size:</label>
+              <select id="size-${p.id}">
+                <option value="S">S</option>
+                <option value="M" selected>M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+              </select>
+            </div>
+            <div class="price-container">
+              <span class="price">₹${p.price}</span>
+              <span class="original-price">₹${p.orig}</span>
+              <span class="discount">${discountPct}% OFF</span>
+            </div>
+            <button class="buy-btn" onclick="orderOnWhatsApp('${p.name}', '${p.price}', 'size-${p.id}')">
+              <i class="fab fa-whatsapp"></i> Buy Now
+            </button>
+          </div>
+        </div>`;
+    }).join("");
 
-      filterButtons.querySelectorAll(".filter-btn").forEach(btn => {
-        btn.classList.toggle("active", btn === button);
+    function orderOnWhatsApp(productName, price, sizeSelectId) {
+      if (whatsappNumber === "91YOUR_REAL_NUMBER") {
+        alert("Please add your real WhatsApp number in the code first.");
+        return;
+      }
+
+      const selectedSize = document.getElementById(sizeSelectId).value;
+      const message = `Hi QYRO Team! I want to order:\n\nProduct: ${productName}\nSize: ${selectedSize}\nPrice: ₹${price}\n\nPlease share the ordering details!`;
+
+      window.open(
+        `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`,
+        "_blank",
+        "noopener,noreferrer"
+      );
+    }
+
+    // Original email method: opens the visitor's default mail app.
+    function handleMailSend(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("custName").value.trim();
+      const email = document.getElementById("custEmail").value.trim();
+      const msg = document.getElementById("custMsg").value.trim();
+
+      const mailtoUrl =
+        `mailto:awanish630684@gmail.com?subject=${encodeURIComponent("New Inquiry from " + name)}&body=${encodeURIComponent("Sender Email: " + email + "\n\nMessage:\n" + msg)}`;
+
+      window.location.href = mailtoUrl;
+    }
+
+    let activeCategory = "all";
+
+    function applyFilters() {
+      const searchTerm = document.getElementById("searchInput").value.toLowerCase().trim();
+      let count = 0;
+
+      document.querySelectorAll(".product-card").forEach(card => {
+        const matchesCategory =
+          activeCategory === "all" ||
+          card.getAttribute("data-category") === activeCategory;
+
+        const matchesSearch =
+          card.getAttribute("data-title").includes(searchTerm);
+
+        const show = matchesCategory && matchesSearch;
+        card.style.display = show ? "block" : "none";
+
+        if (show) count++;
       });
 
-      renderProducts();
-    });
+      document.getElementById("visible-count").textContent = `Showing ${count} Products`;
+    }
 
-    // Search products
-    searchInput.addEventListener("input", renderProducts);
+    function filterCategory(cat, button) {
+      activeCategory = cat;
 
-    // Contact form using FormSubmit AJAX
-    const contactForm = document.getElementById("contactForm");
-    const sendButton = document.getElementById("sendButton");
-    const sendStatus = document.getElementById("sendStatus");
+      document.querySelectorAll(".cat-btn").forEach(btn => {
+        btn.classList.remove("active");
+      });
 
-    contactForm.addEventListener("submit", async function(event) {
-      event.preventDefault();
+      button.classList.add("active");
+      applyFilters();
+    }
 
-      sendStatus.textContent = "";
-      sendButton.disabled = true;
-      sendButton.textContent = "Sending...";
-
-      try {
-        const formData = new FormData(contactForm);
-
-        const response = await fetch(
-          "https://formsubmit.co/ajax/awanish630684@gmail.com",
-          {
-            method: "POST",
-            headers: {
-              "Accept": "application/json"
-            },
-            body: formData
-          }
-        );
-
-        const result = await response.json();
-
-        if (response.ok && result.success) {
-          sendStatus.textContent =
-            "Your message was submitted successfully!";
-          contactForm.reset();
-        } else {
-          sendStatus.textContent =
-            "Message could not be submitted. Please try again or email us directly.";
-        }
-      } catch (error) {
-        sendStatus.textContent =
-          "Connection error. Please check your internet and try again.";
-      } finally {
-        sendButton.disabled = false;
-        sendButton.textContent = "Send Message ↗";
-      }
-    });
-
-    // Footer year
-    document.getElementById("currentYear").textContent =
-      new Date().getFullYear();
-
-    // Initial render
-    renderProducts();
+    function searchProducts() {
+      applyFilters();
+    }
   </script>
 </body>
 </html>
